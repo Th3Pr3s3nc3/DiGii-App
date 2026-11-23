@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get DiGii Sente</title>
+<meta name="robots" content="noindex">
+<script>
+  // 1) PASTE YOUR REAL STORE LINKS HERE (only these two lines need editing)
+  var APP_STORE_URL   = "https://apps.apple.com/us/app/digiisente/id6760140278";   // e.g. https://apps.apple.com/ug/app/digii-sente/id000000000
+  var GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.digii.user"; // e.g. https://play.google.com/store/apps/details?id=com.your.app
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  var ready = function (u) { return u && u.indexOf("PASTE_") !== 0; };
+
+  if (isIOS && ready(APP_STORE_URL)) {
+    window.location.replace(APP_STORE_URL);
+  } else if (isAndroid && ready(GOOGLE_PLAY_URL)) {
+    window.location.replace(GOOGLE_PLAY_URL);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("ios").href = APP_STORE_URL;
+    document.getElementById("android").href = GOOGLE_PLAY_URL;
+  });
+</script>
+<style>
+  :root { --mint:#5ED1C0; --magenta:#E6177F; --yellow:#FFC83D; --ink:#1B1B2F; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink);
+    background: linear-gradient(160deg, var(--mint) 0%, #B8F0E6 55%, var(--yellow) 100%);
+    text-align: center;
+  }
+  main { width: 100%; max-width: 420px; background: #fff; border-radius: 28px; padding: 36px 28px;
+         box-shadow: 0 18px 40px rgba(230,23,127,.18); }
+  h1 { margin: 0 0 6px; font-size: 1.9rem; line-height: 1.15; }
+  h1 span { color: var(--magenta); }
+  p { margin: 0 0 26px; font-size: 1.05rem; }
+  a.btn { display: block; margin: 12px 0; padding: 16px 18px; border-radius: 14px; font-weight: 700;
+          font-size: 1.05rem; text-decoration: none; color: #fff; background: var(--ink); }
+  a.btn.play { background: var(--magenta); }
+  a.btn:hover, a.btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Control <span>your money</span></h1>
+    <p>Get DiGii Sente on your phone.</p>
+    <a id="android" class="btn play" href="#">Get it on Google Play</a>
+    <a id="ios" class="btn" href="#">Download on the App Store</a>
+  </main>
+</body>
+</html>
